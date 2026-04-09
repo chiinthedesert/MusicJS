@@ -1,3 +1,6 @@
+@import "./album-card.css";
+@import "./home-view.css";
+
 *,
 *::before,
 *::after {
@@ -31,11 +34,3 @@ p {
 
 #app {
 }
-
-#navbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-@import "./album-card.css";
