@@ -6,8 +6,8 @@ export function AlbumCard(album, variant = "home") {
       </div>
 
       <div class="album-info">
-        <div class="album-name bold" style="line-height: 1.2; padding-top: 6px;">${album.name}</div>
-        <div class="album-artist" style="line-height: 1.2; opacity: 0.6;">${album.artist}</div>
+        <div class="album-name bold tiny-line">${album.name}</div>
+        <div class="album-artist no-line">${album.artist}</div>
       </div>
     </div>
   `;

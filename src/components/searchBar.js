@@ -1,6 +1,5 @@
-import { html } from "../utils/html.js";
 export function SearchBar() {
-  return html`
+  return `
     <div class="padding">
       <div class="field round fill prefix">
         <i>menu</i>

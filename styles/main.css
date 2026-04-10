@@ -33,4 +33,18 @@ p {
 }
 
 #app {
+  padding-bottom: 10rem;
+}
+
+#player-bar {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+}
+
+#navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

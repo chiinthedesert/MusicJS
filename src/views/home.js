@@ -16,27 +16,31 @@ export function HomeView() {
 
 function QuickActions() {
   return `
-    <div class="row center-align">
+    <div class="quick-actions row center-align">
+
       <div class="column center-align">
         <button class="shape sunny extra fill">
             <span class="shape flower max medium-space">
-              <i>history</i>
+              <i class="extra">history</i>
             </span>
         </button>
+        <small>History</small>
       </div>
 
       <div class="column center-align">
         <button class="shape sided-cookie6 extra fill">
             <span class="shape sided-cookie4 max medium-space">
-              <i>favorite</i>
+              <i class="extra">favorite</i>
             </span>
         </button>
+        <small>Favorites</small>
       </div>
 
       <div class="column center-align">
         <button class="shape puffy extra">
-          <i>trending_up</i>
+          <i class="extra">trending_up</i>
         </button>
+        <small>Most played</small>
       </div>
     </div>
   `;
@@ -46,7 +50,7 @@ function RecentAlbums() {
   return `
     <section class="section">
       <div class="section-header row">
-        <h6 class="bold">Recently played albums</h6>
+        <h6 class="bold max left-padding">Recently played albums</h6>
         <button class="transparent">
           <i class="bold">arrow_forward</i>
         </button>
@@ -66,9 +70,9 @@ function RecentArtists() {
   return `
     <section class="section">
       <div class="section-header row">
-        <h6 class="bold">Recent artists</h6>
+        <h6 class="bold max left-padding">Recent artists</h6>
         <button class="transparent">
-          <i class="bold">arrow_forward</i>
+          <i class="bold ">arrow_forward</i>
         </button>
       </div>
 

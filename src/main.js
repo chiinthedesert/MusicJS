@@ -1,8 +1,9 @@
 ui("theme", "#FFB4B4");
 import * as state from "./state.js";
 
-import { NavBar } from "./components/navBar.js";
-import { renderNavBar } from "./components/navBar.js";
+import { NavBar, renderNavBar } from "./components/navBar.js";
+
+import { PlayerBar, renderPlayerBar } from "./components/playerBar.js";
 
 import { HomeView } from "./views/home.js";
 import { SongsView } from "./views/songs.js";
@@ -24,6 +25,11 @@ export function renderView() {
   view.innerHTML = views[state.getState().currentView]();
 }
 
+state.subscribe(() => {
+  renderView();
+  renderNavBar();
+});
+
 NavBar();
-renderView();
-renderNavBar();
+PlayerBar();
+renderPlayerBar();
