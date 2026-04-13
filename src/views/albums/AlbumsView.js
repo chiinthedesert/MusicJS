@@ -2,30 +2,66 @@ import { SearchBar } from "../../components/searchBar.js";
 import { albums } from "../../data.js";
 import { AlbumCard } from "../../components/albumCard.js";
 
+let sortDirection = "asc";
+let keyword = "";
+
 export function AlbumsView() {
+  render();
+}
+export function render() {
+  const filteredAlbums = getFilteredAlbums();
   const html = `
-    <div class="container albums-view">
+    <div class="container albums-view padding">
       ${SearchBar()}
       ${AlbumsHeader()}
       ${AlbumsGrid()}
     </div>
   `;
   document.getElementById("view").innerHTML = html;
+  attachEvents();
 }
 
-function AlbumsHeader() {
+  function AlbumsHeader() {
   return `
     <div class="section-header row space-between">
-      <h6 class="bold max">Name ↓</h6>
+      <h6 class="bold max sortable" id="sort-name" style="cursor:pointer;">
+        Name ${sortDirection === "asc" ? "↑" : "↓"}</h6>
       <h6 class="bold">Artist</h6>
       <h6 class="bold">Date</h6>
     </div>
   `;
-}
-function AlbumsGrid() {
-  return `
+  }
+  function AlbumsGrid() {
+    return `
       <div class="grid-list row wrap">
-        ${albums.map((album) => AlbumCard(album, "albums")).join("")}
+        ${list.length > 0
+          ? list.map((album) => AlbumCard(album, "albums")).join("")
+          : `<p style="padding: 20px;">No albums found 😢</p>`
+        }
       </div>
     `;
-}
+  }
+
+  function getFilteredAlbums() {
+    let result = [...albums];
+
+    if (keyword.trim() !== "") {
+      result = result.filter((album) => {
+        const albumName = album.name.toLowerCase();
+        const artistName = album.artist.toLowerCase();
+        const searchWord = keyword.toLowerCase();
+        return albumName.includes(searchWord) || artistName.includes(searchWord);
+      });
+    }
+    
+    if (sortDirection === "asc") {
+      result.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    } else {
+      result.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+    }
+    return result;
+  }
