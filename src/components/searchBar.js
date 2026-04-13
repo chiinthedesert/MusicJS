@@ -1,6 +1,6 @@
 export function SearchBar() {
   return `
-    <div class="padding">
+    <div class="search-bar">
       <div class="field round fill prefix">
         <i>menu</i>
         <input id="search-input" type="text" placeholder="Search your music" />

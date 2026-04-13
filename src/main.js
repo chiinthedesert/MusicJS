@@ -5,12 +5,17 @@ import { NavBar, renderNavBar } from "./components/navBar.js";
 
 import { PlayerBar, renderPlayerBar } from "./components/playerBar.js";
 
-import { HomeView } from "./views/home.js";
-import { SongsView } from "./views/songs.js";
-import { AlbumsView } from "./views/albums.js";
-import { PlaylistsView } from "./views/playlists.js";
-import { ArtistsView } from "./views/artists.js";
-import { PlayerView, renderPlayerView } from "./views/player.js";
+import { HomeView } from "./views/home/home.js";
+
+import { SongsView } from "./views/songs/SongsView.js";
+import { bindSongsView } from "./views/songs/SongsController.js";
+
+import { DetailedAlbumView } from "./views/detailedAlbum/DetailedAlbumView.js";
+
+import { AlbumsView } from "./views/albums/albums.js";
+import { PlaylistsView } from "./views/playlists/playlists.js";
+import { ArtistsView } from "./views/artists/artists.js";
+import { PlayerView } from "./views/player/PlayerView.js";
 
 const app = document.getElementById("app");
 const views = {
@@ -20,6 +25,7 @@ const views = {
   playlists: PlaylistsView,
   artists: ArtistsView,
   player: PlayerView,
+  detailedAlbum: DetailedAlbumView,
 };
 
 export function renderView() {
@@ -29,19 +35,16 @@ export function renderView() {
 NavBar();
 PlayerBar();
 
+bindSongsView();
+
 renderView();
 renderNavBar();
 renderPlayerBar();
 
-let lastView = state.getState().currentView;
 state.subscribe(() => {
   const currentView = state.getState().currentView;
 
-  if (lastView !== currentView) {
-    renderView();
-    lastView = currentView;
-  }
-
+  renderView();
   renderNavBar();
   renderPlayerBar();
 

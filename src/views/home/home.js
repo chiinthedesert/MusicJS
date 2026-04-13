@@ -1,12 +1,12 @@
-import { albums } from "../data.js";
-import { AlbumCard } from "../components/albumCard.js";
-import { SearchBar } from "../components/searchBar.js";
-import { ArtistCard } from "../components/artistCard.js";
+import { albums } from "../../data.js";
+import { AlbumCard } from "../../components/albumCard.js";
+import { SearchBar } from "../../components/searchBar.js";
+import { ArtistCard } from "../../components/artistCard.js";
 
 export function HomeView() {
   const html = `
-    <div class="home-view">
-      ${SearchBar()}
+  <div class="home-view padding">
+    ${SearchBar()}
       ${QuickActions()}
       ${RecentAlbums()}
       ${RecentArtists()}
@@ -51,7 +51,7 @@ function RecentAlbums() {
   return `
     <section class="section">
       <div class="section-header row">
-        <h6 class="bold max left-padding">Recently played albums</h6>
+        <h6 class="bold max">Recently played albums</h6>
         <button class="transparent">
           <i class="bold">arrow_forward</i>
         </button>
@@ -68,19 +68,32 @@ function RecentAlbums() {
 }
 
 function RecentArtists() {
+  const map = new Map();
+
+  albums.forEach((album) => {
+    if (!map.has(album.artist)) {
+      map.set(album.artist, {
+        name: album.artist,
+        cover: album.artistPhoto,
+      });
+    }
+  });
+
+  const artists = Array.from(map.values());
+
   return `
     <section class="section">
       <div class="section-header row">
-        <h6 class="bold max left-padding">Recent artists</h6>
+        <h6 class="bold max">Recent artists</h6>
         <button class="transparent">
           <i class="bold ">arrow_forward</i>
         </button>
       </div>
 
       <div class="horizontal-list row scroll" style="scrollbar-width: none;">
-        ${albums
+        ${artists
           .slice(0, 7)
-          .map((album) => ArtistCard(album, "home"))
+          .map((artist) => ArtistCard(artist, "home"))
           .join("")}
       </div>
     </section>

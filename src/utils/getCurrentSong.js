@@ -12,8 +12,13 @@ export function getCurrentSong() {
   if (!track) return null;
 
   return {
+    id: track.id,
+    albumId: album.id,
+
     title: track.title,
     artist: album.artist,
     cover: album.cover,
+    duration: track.duration,
+    lyrics: track.lyrics,
   };
 }

@@ -1,4 +1,4 @@
-import { SearchBar } from "../components/searchBar.js";
+import { SearchBar } from "../../components/searchBar.js";
 
 export function AlbumsView() {
   const html = `
