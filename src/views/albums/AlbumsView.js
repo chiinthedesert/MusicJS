@@ -14,7 +14,7 @@ export function render() {
     <div class="container albums-view padding">
       ${SearchBar()}
       ${AlbumsHeader()}
-      ${AlbumsGrid()}
+      ${AlbumsGrid(filteredAlbums)}
     </div>
   `;
   document.getElementById("view").innerHTML = html;
@@ -31,12 +31,12 @@ export function render() {
     </div>
   `;
   }
-  function AlbumsGrid() {
+  function AlbumsGrid(list) {
     return `
       <div class="grid-list row wrap">
         ${list.length > 0
           ? list.map((album) => AlbumCard(album, "albums")).join("")
-          : `<p style="padding: 20px;">No albums found 😢</p>`
+          : `<p style="padding: 20px;">No albums found</p>`
         }
       </div>
     `;
