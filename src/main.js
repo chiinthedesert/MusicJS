@@ -40,8 +40,11 @@ state.subscribe(() => {
   if (lastView !== currentView) {
     renderView();
     lastView = currentView;
+  } else {
+    if (currentView === "songs") {
+      renderView();
+    }
   }
-
   renderNavBar();
   renderPlayerBar();
 

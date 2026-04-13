@@ -5,8 +5,8 @@ export const albums = [
     artist: "Sufjan Stevens",
     year: 2015,
 
-    cover: "/src/img/covers/carrie-lowell.jpg",
-    artistPhoto: "/src/img/artists/sufjan-stevens.png",
+    cover: "./src/img/covers/carrie-lowell.jpg",
+    artistPhoto: "./src/img/artists/sufjan-stevens.png",
 
     tracks: [
       {
@@ -146,8 +146,8 @@ Like a shadow made of light
     artist: "ILLIT",
     year: 2024,
 
-    cover: "/src/img/covers/ill-like-you.jpg",
-    artistPhoto: "/src/img/artists/illit.jpg",
+    cover: "./src/img/covers/ill-like-you.jpg",
+    artistPhoto: "./src/img/artists/illit.jpg",
 
     tracks: [
       {
@@ -229,8 +229,8 @@ Like a shadow made of light
     artist: "ILLIT",
     year: 2024,
 
-    cover: "/src/img/covers/super-real-me.png",
-    artistPhoto: "/src/img/artists/illit.jpg",
+    cover: "./src/img/covers/super-real-me.png",
+    artistPhoto: "./src/img/artists/illit.jpg",
 
     tracks: [
       {
@@ -310,8 +310,8 @@ You got me feeling like a magnet
     artist: "ILLIT",
     year: 2025,
 
-    cover: "/src/img/covers/not-cute-anymore.png",
-    artistPhoto: "/src/img/artists/illit.jpg",
+    cover: "./src/img/covers/not-cute-anymore.png",
+    artistPhoto: "./src/img/artists/illit.jpg",
 
     tracks: [
       {
@@ -357,8 +357,8 @@ You got me feeling like a magnet
     artist: "The Beatles",
     year: 1965,
 
-    cover: "/src/img/covers/rubber-soul.png",
-    artistPhoto: "/src/img/artists/the-beatles.jpg",
+    cover: "./src/img/covers/rubber-soul.png",
+    artistPhoto: "./src/img/artists/the-beatles.jpg",
 
     tracks: [
       {
@@ -496,8 +496,8 @@ You got me feeling like a magnet
     artist: "The Beach Boys",
     year: 1966,
 
-    cover: "/src/img/covers/pet-sounds.jpg",
-    artistPhoto: "/src/img/artists/the-beach-boys.webp",
+    cover: "./src/img/covers/pet-sounds.jpg",
+    artistPhoto: "./src/img/artists/the-beach-boys.webp",
 
     tracks: [
       {
@@ -626,8 +626,8 @@ You got me feeling like a magnet
     artist: "RADWIMPS",
     year: 2016,
 
-    cover: "/src/img/covers/your-name.jpg",
-    artistPhoto: "/src/img/artists/radwimps.jpg",
+    cover: "./src/img/covers/your-name.jpg",
+    artistPhoto: "./src/img/artists/radwimps.jpg",
 
     tracks: [
       {
@@ -792,8 +792,8 @@ You got me feeling like a magnet
     artist: "Radiohead",
     year: 1997,
 
-    cover: "/src/img/covers/ok-computer.png",
-    artistPhoto: "/src/img/artists/radiohead.jpg",
+    cover: "./src/img/covers/ok-computer.png",
+    artistPhoto: "./src/img/artists/radiohead.jpg",
 
     tracks: [
       {

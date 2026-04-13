@@ -1,4 +1,5 @@
 import { getCurrentSong } from "../utils/getCurrentSong.js";
+import { formatTime } from "../utils/formatTime.js";
 import { previousView } from "../utils/previousView.js";
 import * as state from "../state.js";
 
@@ -6,10 +7,12 @@ export function PlayerView() {
   const html = `
     <div id="player-view" class="player-view"
     style="display: flex; flex-direction: column; height: 100dvh;">
-      <div>
-      </div>
-      <div class="player-main left-padding right-padding" style="flex: 1; display: flex; flex-direction: column; justify-content: space-evenly;">
-        <div class="row center-align">
+      <div class="player-main left-padding right-padding" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+        <button id="player-view-back-button" class="extra circle transparent ">
+          <i class="bold">arrow_back</i>
+        </button>
+
+        <div class="row no-margin center-align">
           <img id="player-view-cover" class="shape sided-cookie12"
           style="block-size: 16rem; inline-size: 16rem; object-fit: cover;" src="" alt="" />
         </div>
@@ -31,6 +34,8 @@ export function PlayerView() {
         </div>
 
         <progress class="wavy" value="30" max="100"></progress>
+        <div class="duration">
+        </div>
 
         <div class="group row no-margin gap center-align" style="">
           <button class="extra round">
@@ -72,21 +77,11 @@ export function PlayerView() {
   document.getElementById("view").innerHTML = html;
 
   const playerView = document.querySelector(".player-view");
-  let startY = 0;
-  let currentY = 0;
-  playerView.addEventListener("touchstart", (e) => {
-    startY = e.touches[0].clientY;
-  });
-  playerView.addEventListener("touchmove", (e) => {
-    currentY = e.touches[0].clientY;
-  });
-  playerView.addEventListener("touchend", () => {
-    const diff = currentY - startY;
+  const backButton = document.getElementById("player-view-back-button");
 
-    if (diff > 100) {
-      previousView();
-    }
-  });
+  backButton.onclick = () => {
+    previousView();
+  };
   renderPlayerView();
 }
 

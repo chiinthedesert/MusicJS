@@ -1,5 +1,5 @@
 const state = {
-  currentView: "home",
+  currentView: "songs",
   historyView: [],
   currentSong: { albumId: "not-cute-anymore", id: "01" },
   // currentSong: null,
@@ -7,6 +7,22 @@ const state = {
   isPlaying: false,
   currentTime: 0,
   duration: 0,
+
+  sort: {
+    songs: {
+      by: "title",
+      order: "asc",
+    },
+    albums: {
+      by: "name",
+      order: "asc",
+    },
+    artists: {
+      by: "name",
+      order: "asc",
+    },
+  },
+  isSortOpen: false,
 };
 
 export function getState() {
