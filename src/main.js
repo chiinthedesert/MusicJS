@@ -8,14 +8,18 @@ import { PlayerBar, renderPlayerBar } from "./components/playerBar.js";
 import { HomeView } from "./views/home/home.js";
 
 import { SongsView } from "./views/songs/SongsView.js";
-import { bindSongsView } from "./views/songs/SongsController.js";
+import { handleSongsAction } from "./views/songs/handleSongsAction.js";
+import { handleSongsHover } from "./views/songs/handleSongsHover.js";
+
+import { PlayerView } from "./views/player/PlayerView.js";
+import { handlePlayerAction } from "./views/player/handlePlayerAction.js";
 
 import { DetailedAlbumView } from "./views/detailedAlbum/DetailedAlbumView.js";
+import { DetailedArtistView } from "./views/detailedArtist/DetailedArtistView.js";
 
-import { AlbumsView } from "./views/albums/albums.js";
-import { PlaylistsView } from "./views/playlists/playlists.js";
-import { ArtistsView } from "./views/artists/artists.js";
-import { PlayerView } from "./views/player/PlayerView.js";
+import { AlbumsView } from "./views/albums/AlbumsView.js";
+import { PlaylistsView } from "./views/playlists/PlaylistsView.js";
+import { ArtistsView } from "./views/artists/ArtistsView.js";
 
 const app = document.getElementById("app");
 const views = {
@@ -26,6 +30,7 @@ const views = {
   artists: ArtistsView,
   player: PlayerView,
   detailedAlbum: DetailedAlbumView,
+  detailedArtist: DetailedArtistView,
 };
 
 export function renderView() {
@@ -35,7 +40,16 @@ export function renderView() {
 NavBar();
 PlayerBar();
 
-bindSongsView();
+app.onclick = (e) => {
+  const el = e.target.closest("[data-action]");
+  if (!el) return;
+
+  const action = el.dataset.action;
+
+  handleSongsAction(action, el);
+  handlePlayerAction(action, el);
+};
+handleSongsHover();
 
 renderView();
 renderNavBar();
@@ -47,10 +61,6 @@ state.subscribe(() => {
   renderView();
   renderNavBar();
   renderPlayerBar();
-
-  if (currentView === "player") {
-    renderPlayerView();
-  }
 
   document.getElementById("player-bar").style.display =
     currentView === "player" ? "none" : "block";

@@ -1,12 +1,11 @@
 const state = {
-  currentView: "detailedAlbum",
+  currentView: "songs",
   historyView: [],
   currentSong: { albumId: "not-cute-anymore", id: "01" },
   // currentSong: null,
 
   isPlaying: false,
   currentTime: 0,
-  duration: 0,
 
   sort: {
     songs: {

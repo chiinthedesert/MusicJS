@@ -13,7 +13,7 @@ export function AlbumsView() {
   document.getElementById("view").innerHTML = html;
 }
 
-  function AlbumsHeader() {
+function AlbumsHeader() {
   return `
     <div class="section-header row space-between">
       <h6 class="bold max">Name ↓</h6>
@@ -21,11 +21,11 @@ export function AlbumsView() {
       <h6 class="bold">Date</h6>
     </div>
   `;
-  }
-  function AlbumsGrid() {
-    return `
+}
+function AlbumsGrid() {
+  return `
       <div class="grid-list row wrap">
         ${albums.map((album) => AlbumCard(album, "albums")).join("")}
       </div>
     `;
-  }
+}
