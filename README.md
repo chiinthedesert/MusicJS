@@ -1,6 +1,7 @@
 # Thiết kế web app nghe nhạc ngoại tuyến theo Material Design
 
 ## Những việc cần làm
+- [ ] thiết kế giao diện cho desktop
 - [x] home view
   - [x] giao diện
   - [x] logic click để vào các view khác
