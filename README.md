@@ -2,6 +2,10 @@
 
 ## Những việc cần làm
 - [ ] thiết kế giao diện cho desktop
+- [ ] logic queue đơn giản
+- [ ] viết README đầy đủ
+- [ ] animation khi chuyển đổi giữa các view, hover
+- [ ] animation cho thanh progress
 - [x] home view
   - [x] giao diện
   - [x] logic click để vào các view khác
@@ -11,19 +15,19 @@
 - [x] songs view
   - [x] giao diện
   - [x] logic click để vào detail song view
-- [ ] albums view
+- [x] albums view
   - [x] giao diện
   - [x] logic click để vào detail album view
-  - [ ] cần style tốt hơn
-- [ ] artists view
+  - [x] cần style tốt hơn
+- [x] artists view
   - [x] giao diện
   - [x] logic click để vào detail artist view
-  - [ ] cần style tốt hơn
+  - [x] cần style tốt hơn
 - [x] detail artist view
   - [x] giao diện
-- [ ] detail album view
+- [x] detail album view
   - [x] giao diện
-  - [ ] cần style tốt hơn
+  - [x] cần style tốt hơn
 - [ ] search view
 - [ ] settings view
 - [ ] playlists view
