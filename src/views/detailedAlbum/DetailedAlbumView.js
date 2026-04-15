@@ -11,7 +11,7 @@ export function DetailedAlbumView() {
   );
 
   const html = `
-    <div class="album-detail">
+    <div id="detailed-album-view">
       ${BackButton()}
 
       <div class="album-header">

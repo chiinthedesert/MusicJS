@@ -11,7 +11,7 @@ export function PlayerView() {
   const lyrics = song?.lyrics || null;
 
   const html = `
-    <div id="player-view" class="player-view"
+    <div id="player-view" class=""
     style="display: flex; flex-direction: column; height: 100dvh;">
 
       <div class="player-main left-padding right-padding" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">

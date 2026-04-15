@@ -9,7 +9,7 @@ export function DetailedArtistView() {
   const tracks = getTracks({ artist: artist.name });
 
   const html = `
-    <div class="detailed-artist-view padding">
+    <div id="detailed-artist-view" class="padding">
 
       ${BackButton()}
       ${PhotoAndName(artist)}
