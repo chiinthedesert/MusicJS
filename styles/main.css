@@ -33,16 +33,16 @@ p {
 }
 
 #view {
-  padding: 0 0 160px 0;
+  padding: 0 0 calc(10rem + env(safe-area-inset-bottom)) 0;
 }
 #view:has(#player-view) {
   padding-bottom: 0;
 }
 #view:has(#detailed-album-view) {
-  padding-bottom: 80px;
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
 }
 #view:has(#detailed-artist-view) {
-  padding-bottom: 80px;
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
 }
 
 #bottom-bars {
