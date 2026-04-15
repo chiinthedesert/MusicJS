@@ -1,5 +1,6 @@
 const state = {
-  currentView: "songs",
+  currentView: "home",
+  viewState: {},
   historyView: [],
   currentSong: { albumId: "not-cute-anymore", id: "01" },
   // currentSong: null,
@@ -39,7 +40,10 @@ export function setState(partial, { skipHistory = false } = {}) {
     partial.currentView &&
     partial.currentView !== state.currentView
   ) {
-    state.historyView.push(state.currentView);
+    state.historyView.push({
+      currentView: state.currentView,
+      viewState: { ...state.viewState },
+    });
   }
 
   Object.assign(state, partial);

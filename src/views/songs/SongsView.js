@@ -2,15 +2,15 @@ import { SearchBar } from "../../components/searchBar.js";
 import { TrackItem } from "../../components/trackItem.js";
 import * as state from "../../state.js";
 import { albums } from "../../data.js";
-import { getAllTracks } from "../../utils/getAllTracks.js";
-import { sortTracks } from "../../utils/sortTracks.js";
+import { getTracks } from "../../utils/getTracks.js";
+import { sortItems } from "../../utils/sortItems.js";
 
 export function SongsView() {
   const { sort, isSortOpen } = state.getState();
   const { by, order } = sort.songs;
 
-  let tracks = getAllTracks(albums);
-  tracks = sortTracks(tracks, by, order);
+  let tracks = getTracks();
+  tracks = sortItems(tracks, by, order);
 
   const html = `
     <div class="songs-view padding">
@@ -70,7 +70,7 @@ function SortMenu({ by, order, isSortOpen }) {
   `;
 }
 
-export function PlayAndShuffle() {
+function PlayAndShuffle() {
   return `
     <div class="play-buttons row center-align">
       <button data-action="songs:play-all" class="shape sided-cookie6 medium active">

@@ -15,79 +15,118 @@ export function PlayerView() {
     style="display: flex; flex-direction: column; height: 100dvh;">
 
       <div class="player-main left-padding right-padding" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
-
-        <button data-action="player:back" class="extra circle transparent ">
-          <i class="bold">arrow_back</i>
-        </button>
-
-        <div class="row no-margin center-align">
-          <img id="player-view-cover" class="shape sided-cookie12 ${isPlaying ? "rotate" : ""}"
-          style="block-size: 16rem; inline-size: 16rem; object-fit: cover;" src="${cover}" alt="" />
-        </div>
-
-        <div class="row no-margin">
-          <div class="max">
-            <div id="player-view-song-title" class="bold tiny-line"
-              style="font-size: 1.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <span>${title}</span>
-            </div>
-            <div id="player-view-artist" class="no-line"
-              style="font-size: 1.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <span>${artist}</span>
-            </div>
-          </div>
-          <button data-action="player:favorite" class="circle extra">
-            <i class="extra">favorite</i>
-          </button>
-        </div>
-
-        <div class="progress">
-          <progress class="wavy" value="${currentTime}" max="${song?.duration || 1}"></progress>
-          <div class="row no-margin">
-            <span class="max">${formatTime(currentTime)}</span>
-            <span>${formatTime(song?.duration || 0)}</span>
-          </div>
-        </div>
-
-        <div class="group row no-margin gap center-align" style="">
-          <button data-action="player:prev" class="extra round">
-            <i class="extra">skip_previous</i>
-          </button>
-          <button data-action="player:play-toggle" class="extra active" style="width: 6rem; height: 4rem;border-radius:2rem !important;">
-            <i id="player-view-play-icon" class="extra">
-              ${isPlaying ? "pause" : "play_arrow"}</i>
-            <span class="bold">
-              ${isPlaying ? "Pause" : "Play"}
-            </span>
-          </button>
-          <button data-action="player:next" class="extra round">
-            <i class="extra">skip_next</i>
-          </button>
-        </div>
-
-        <div class="row no-margin gap">
-          <div class="group max">
-            <button data-action="player:queue" class="left-round">
-              <i>queue_music</i>
-            </button>
-            <button data-action="player:shuffle" class="no-round">
-              <i>shuffle</i>
-            </button>
-            <button data-action="player:repeat" class="right-round">
-              <i>repeat</i>
-            </button>
-          </div>
-          <button data-action="player:menu" class="circle">
-            <i>more_vert</i>
-          </button>
-        </div>
+        ${BackButton()}
+        ${AlbumCover(cover, isPlaying)}
+        ${TitleAndArtist(title, artist)}
+        ${Progress(currentTime, song)}
+        ${PrevPlayNext(isPlaying)}
+        ${OtherButtons()}
       </div>
-
-      <div id="lyrics-space" class="secondary top-padding bottom-padding top-round center-align" 
-      style="margin-top: auto;">
-        <span style="font-size: 1.25rem; font-weight: bold;">Wanna see lyrics</span>
-      </div>
+      ${Lyrics()} 
     </div>
   `;
   document.getElementById("view").innerHTML = html;
+}
+
+function BackButton() {
+  return `
+    <button data-action="player:back" class="extra circle transparent ">
+      <i class="bold">arrow_back</i>
+    </button>
+  `;
+}
+
+function AlbumCover(cover, isPlaying) {
+  return `
+    <div class="row no-margin center-align">
+      <div class="shape sided-cookie12 ${isPlaying ? "rotate" : ""}"
+      style="block-size: 16rem; inline-size: 16rem; object-fit: cover;"
+      >
+        <img id="player-view-cover" class=""
+        style="" src="${cover}" alt="title" />
+      </div>
+    </div>
+  `;
+}
+
+function TitleAndArtist(title, artist) {
+  return `
+    <div class="row no-margin">
+      <div class="max">
+        <div id="player-view-song-title" class="bold tiny-line"
+          style="font-size: 1.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span>${title}</span>
+        </div>
+        <div id="player-view-artist" class="no-line"
+          style="font-size: 1.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span>${artist}</span>
+        </div>
+      </div>
+      <button data-action="player:favorite" class="circle extra">
+        <i class="extra">favorite</i>
+      </button>
+    </div>
+  `;
+}
+
+function Progress(currentTime, song) {
+  return `
+    <div class="progress">
+      <progress class="wavy" value="${currentTime}" max="${song?.duration || 1}"></progress>
+      <div class="row no-margin">
+        <span class="max">${formatTime(currentTime)}</span>
+        <span>${formatTime(song?.duration || 0)}</span>
+      </div>
+    </div>
+  `;
+}
+
+function PrevPlayNext(isPlaying) {
+  return `
+    <div class="group row no-margin gap center-align" style="">
+      <button data-action="player:prev" class="extra round">
+        <i class="extra">skip_previous</i>
+      </button>
+      <button data-action="player:play-toggle" class="extra active" style="width: 6rem; height: 4rem;border-radius:2rem !important;">
+        <i id="player-view-play-icon" class="extra">
+          ${isPlaying ? "pause" : "play_arrow"}</i>
+        <span class="bold">
+          ${isPlaying ? "Pause" : "Play"}
+        </span>
+      </button>
+      <button data-action="player:next" class="extra round">
+        <i class="extra">skip_next</i>
+      </button>
+    </div>
+    `;
+}
+
+function OtherButtons() {
+  return `
+    <div class="row no-margin gap">
+      <div class="group max">
+        <button data-action="player:queue" class="left-round">
+          <i>queue_music</i>
+        </button>
+        <button data-action="player:shuffle" class="no-round">
+          <i>shuffle</i>
+        </button>
+        <button data-action="player:repeat" class="right-round">
+          <i>repeat</i>
+        </button>
+      </div>
+      <button data-action="player:menu" class="circle">
+        <i>more_vert</i>
+      </button>
+    </div>
+    `;
+}
+
+function Lyrics() {
+  return `
+    <div id="lyrics-space" class="secondary top-padding bottom-padding top-round center-align" 
+    style="margin-top: auto;">
+      <span style="font-size: 1.25rem; font-weight: bold;">Wanna see lyrics</span>
+    </div>
+  `;
 }

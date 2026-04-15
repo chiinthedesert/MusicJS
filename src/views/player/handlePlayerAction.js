@@ -9,6 +9,10 @@ export function handlePlayerAction(action, el) {
       previousView();
       break;
 
+    case "player:open":
+      state.setState({ currentView: "player", viewState: {} });
+      break;
+
     case "player:play-toggle": {
       const { isPlaying } = state.getState();
       state.setState({ isPlaying: !isPlaying });

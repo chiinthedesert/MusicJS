@@ -1,11 +1,11 @@
 ui("theme", "#FFB4B4");
 import * as state from "./state.js";
 
-import { NavBar, renderNavBar } from "./components/navBar.js";
-
-import { PlayerBar, renderPlayerBar } from "./components/playerBar.js";
+import { NavBar, handleNavBarAction } from "./components/navBar.js";
+import { PlayerBar } from "./components/playerBar.js";
 
 import { HomeView } from "./views/home/home.js";
+import { handleHomeAction } from "./views/home/handleHomeAction.js";
 
 import { SongsView } from "./views/songs/SongsView.js";
 import { handleSongsAction } from "./views/songs/handleSongsAction.js";
@@ -39,6 +39,7 @@ export function renderView() {
 
 NavBar();
 PlayerBar();
+renderView();
 
 app.onclick = (e) => {
   const el = e.target.closest("[data-action]");
@@ -48,22 +49,13 @@ app.onclick = (e) => {
 
   handleSongsAction(action, el);
   handlePlayerAction(action, el);
+  handleHomeAction(action, el);
+  handleNavBarAction(action, el);
 };
 handleSongsHover();
 
-renderView();
-renderNavBar();
-renderPlayerBar();
-
 state.subscribe(() => {
-  const currentView = state.getState().currentView;
-
   renderView();
-  renderNavBar();
-  renderPlayerBar();
-
-  document.getElementById("player-bar").style.display =
-    currentView === "player" ? "none" : "block";
-  document.getElementById("navbar").style.display =
-    currentView === "player" ? "none" : "block";
+  PlayerBar();
+  NavBar();
 });

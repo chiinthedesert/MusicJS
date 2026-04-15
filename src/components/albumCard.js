@@ -1,6 +1,6 @@
 export function AlbumCard(album, variant = "home") {
   return `
-    <div class="album-card ${variant}">
+    <div data-action="album-click" data-album-id="${album.id}" class="album-card ${variant}">
       <div class="album-cover">
         <img class="responsive square round small-width small-height" style="object-fit: cover;" src="${album.cover}" alt="${album.name}" />
       </div>

@@ -1,41 +1,51 @@
 import * as state from "../state.js";
 
 export function NavBar() {
+  const { currentView } = state.getState();
+
+  const hidden =
+    currentView === "player" ||
+    currentView === "detailedArtist" ||
+    currentView === "detailedAlbum"
+      ? "none"
+      : "";
+
   const html = `
-      <nav class="navbar padding secondary row top-round center-align" style="">
-        <button class="button" data-view="home">
-          <i>home</i>
-        </button>
+    <nav class="navbar padding secondary row top-round center-align"
+      style="display: ${hidden};">
 
-        <button class="button" data-view="songs">
-          <i>library_music</i>
-        </button>
+      ${NavButton("home", "home", currentView)}
+      ${NavButton("songs", "library_music", currentView)}
+      ${NavButton("albums", "album", currentView)}
+      ${NavButton("playlists", "queue_music", currentView)}
+      ${NavButton("artists", "artist", currentView)}
 
-        <button class="button " data-view="albums">
-          <i>album</i>
-        </button>
+    </nav>
+  `;
 
-        <button class="button " data-view="playlists">
-          <i>queue_music</i>
-        </button>
-
-        <button class="button " data-view="artists">
-          <i>artist</i>
-        </button>
-      </nav>
-    `;
-  document.getElementById("navbar").insertAdjacentHTML("beforeend", html);
-
-  document.querySelectorAll("#navbar button").forEach((button) => {
-    button.onclick = () => {
-      state.setState({ currentView: button.dataset.view });
-    };
-  });
+  document.getElementById("navbar").innerHTML = html;
 }
 
-export function renderNavBar() {
-  document.querySelectorAll("#navbar button").forEach((button) => {
-    const isActive = button.dataset.view === state.getState().currentView;
-    button.classList.toggle("fill", isActive);
-  });
+function NavButton(view, icon, currentView) {
+  const active = view === currentView ? "fill" : "";
+
+  return `
+    <button class="button ${active}"
+      data-action="nav:go"
+      data-view="${view}">
+      <i>${icon}</i>
+    </button>
+  `;
+}
+
+export function handleNavBarAction(action, el) {
+  if (!action.startsWith("nav:")) return;
+  switch (action) {
+    case "nav:go":
+      state.setState({
+        currentView: el.dataset.view,
+        viewState: {},
+      });
+      break;
+  }
 }

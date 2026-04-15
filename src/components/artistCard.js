@@ -1,6 +1,6 @@
 export function ArtistCard(artist, variant = "home") {
   return `
-    <div class="artist-card ${variant}">
+    <div data-action="artist-click" data-artist="${artist.name}" class="artist-card ${variant}">
       <div class="artist-photo">
         <img 
           class="responsive circle small-width small-height" 
