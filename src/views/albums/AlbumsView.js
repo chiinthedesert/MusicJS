@@ -5,24 +5,32 @@ import { getAlbums } from "../../utils/getAlbums.js";
 import * as state from "../../state.js";
 
 export function AlbumsView() {
-  const { sort, isSortOpen } = state.getState();
-  const { by, order } = sort.albums;
-
-  let albums = getAlbums();
-  albums = sortItems(albums, by, order);
-
-  const html = `
-    <div id="albums-view" class="albums-view padding">
-      ${SearchBar()}
-      ${SortMenu({ by, order, isSortOpen })}
-      ${PlayAndShuffle()}
-      ${AlbumsGrid(albums)}
-    </div>
-  `;
-  document.getElementById("view").innerHTML = html;
-}
+    const currentState = state.getState();
+    const sortInfo = currentState.sort.albums;
+    const isSortOpen = currentState.isSortOpen;
+  
+    let albums = getAlbums();
+    albums = sortItems(albums, sortInfo.by, sortInfo.order);
+  
+    const html = `
+      <div id="albums-view" class="albums-view padding">
+        ${SearchBar()}
+        ${SortMenu({ sortInfo.by, sortInfo.order, isSortOpen })}
+        ${PlayAndShuffle()}
+        ${AlbumsGrid(albums)}
+      </div>
+    `;
+    document.getElementById("view").innerHTML = html;
+  }
 
 function SortMenu({ by, order, isSortOpen }) {
+  function arrowIcon(type) {
+    if (by === type) {
+      return order === "asc" ? "<i>arrow_downward</i>" : "<i>arrow_upward</i>";
+    }
+    return "";
+  }
+  
   return `
     <div class="sort row">
       <button data-action="albums:sort-toggle" class="${isSortOpen ? "active" : ""}">
@@ -34,33 +42,21 @@ function SortMenu({ by, order, isSortOpen }) {
         <li>
           <button data-action="albums:sort" data-type="name" class="fill small ${by === "name" ? "active" : ""}">
             <span>Name</span>
-            ${
-              by === "name"
-                ? `<i>${order === "asc" ? "arrow_downward" : "arrow_upward"}</i>`
-                : ""
-            }
+            ${arrowIcon("name")}
           </button>
         </li>
 
         <li>
           <button data-action="albums:sort" data-type="artist" class="fill small ${by === "artist" ? "active" : ""}">
             <span>Artist</span>
-            ${
-              by === "artist"
-                ? `<i>${order === "asc" ? "arrow_downward" : "arrow_upward"}</i>`
-                : ""
-            }
+            ${arrowIcon("artist")}
           </button>
         </li>
 
         <li>
           <button data-action="albums:sort" data-type="year" class="fill small ${by === "year" ? "active" : ""}">
             <span>Year</span>
-            ${
-              by === "year"
-                ? `<i>${order === "asc" ? "arrow_downward" : "arrow_upward"}</i>`
-                : ""
-            }
+            ${arrowIcon("year")}
           </button>
         </li>
 
