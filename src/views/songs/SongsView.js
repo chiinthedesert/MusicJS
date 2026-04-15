@@ -1,7 +1,7 @@
 import { SearchBar } from "../../components/searchBar.js";
 import { TrackItem } from "../../components/trackItem.js";
 import * as state from "../../state.js";
-import { albums } from "../../data.js";
+
 import { getTracks } from "../../utils/getTracks.js";
 import { sortItems } from "../../utils/sortItems.js";
 

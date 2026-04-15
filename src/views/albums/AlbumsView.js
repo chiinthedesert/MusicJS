@@ -1,65 +1,101 @@
 import { SearchBar } from "../../components/searchBar.js";
-import { albums } from "../../data.js";
 import { AlbumCard } from "../../components/albumCard.js";
-
-let sortDirection = "asc";
-let keyword = "";
+import { sortItems } from "../../utils/sortItems.js";
+import { getAlbums } from "../../utils/getAlbums.js";
+import * as state from "../../state.js";
 
 export function AlbumsView() {
-  const filteredAlbums = getFilteredAlbums();
+  const { sort, isSortOpen } = state.getState();
+  const { by, order } = sort.albums;
+
+  let albums = getAlbums();
+  albums = sortItems(albums, by, order);
+
   const html = `
-    <div class="container albums-view padding">
+    <div id="albums-view" class="albums-view padding">
       ${SearchBar()}
-      ${AlbumsHeader()}
-      ${AlbumsGrid(filteredAlbums)}
+      ${SortMenu({ by, order, isSortOpen })}
+      ${PlayAndShuffle()}
+      ${AlbumsGrid(albums)}
     </div>
   `;
   document.getElementById("view").innerHTML = html;
 }
 
-function AlbumsHeader() {
+function SortMenu({ by, order, isSortOpen }) {
   return `
-    <div class="section-header row space-between"
-      style="background:#f5f5f5; margin-bottom:10px;">
-      <h6 class="bold max sortable" id="sort-name" style="cursor:pointer; color:#1976d2;">
-        Name ${sortDirection === "asc" ? "↑" : "↓"}</h6>
-      <h6 class="bold" style="color:#333;">Artist</h6>
-      <h6 class="bold" style="color:#333;">Date</h6>
+    <div class="sort row">
+      <button data-action="albums:sort-toggle" class="${isSortOpen ? "active" : ""}">
+        <span>Sort</span>
+        <i>sort</i>
+      </button>
+
+      <menu class="group no-wrap small-space bottom ${isSortOpen ? "active" : ""}">
+        <li>
+          <button data-action="albums:sort" data-type="name" class="fill small ${by === "name" ? "active" : ""}">
+            <span>Name</span>
+            ${
+              by === "name"
+                ? `<i>${order === "asc" ? "arrow_downward" : "arrow_upward"}</i>`
+                : ""
+            }
+          </button>
+        </li>
+
+        <li>
+          <button data-action="albums:sort" data-type="artist" class="fill small ${by === "artist" ? "active" : ""}">
+            <span>Artist</span>
+            ${
+              by === "artist"
+                ? `<i>${order === "asc" ? "arrow_downward" : "arrow_upward"}</i>`
+                : ""
+            }
+          </button>
+        </li>
+
+        <li>
+          <button data-action="albums:sort" data-type="year" class="fill small ${by === "year" ? "active" : ""}">
+            <span>Year</span>
+            ${
+              by === "year"
+                ? `<i>${order === "asc" ? "arrow_downward" : "arrow_upward"}</i>`
+                : ""
+            }
+          </button>
+        </li>
+
+      </menu>
     </div>
   `;
 }
-function AlbumsGrid(list) {
+
+function PlayAndShuffle() {
   return `
-      <div class="grid-list row wrap" style="padding:15px; background:#fafafa;">
-        ${
-          list.length > 0
-            ? list.map((album) => AlbumCard(album, "albums")).join("")
-            : `<p style="padding: 20px; color:#999;">No albums found</p>`
-        }
-      </div>
-    `;
+    <div class="play-buttons row center-align">
+      <button data-action="albums:play-all" class="shape sided-cookie6 medium active">
+        <i class="extra">play_arrow</i>
+      </button>
+      <button data-action="albums:shuffle" class="shape sided-cookie12 medium">
+        <i class="extra">shuffle</i>
+      </button>
+    </div>
+  `;
 }
 
-function getFilteredAlbums() {
-  let result = [...albums];
-
-  if (keyword.trim() !== "") {
-    result = result.filter((album) => {
-      const albumName = album.name.toLowerCase();
-      const artistName = album.artist.toLowerCase();
-      const searchWord = keyword.toLowerCase();
-      return albumName.includes(searchWord) || artistName.includes(searchWord);
-    });
+function AlbumsGrid(albums) {
+  if (albums.length === 0) {
+    return `<p>No albums found</p>`;
   }
 
-  if (sortDirection === "asc") {
-    result.sort((a, b) => {
-      return a.name.localeCompare(b.name);
-    });
-  } else {
-    result.sort((a, b) => {
-      return b.name.localeCompare(a.name);
-    });
-  }
-  return result;
+  return `
+    <section 
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(8rem, 25vw, 12rem), 1fr));
+        gap: 1rem;
+      "
+    >
+      ${albums.map((album) => AlbumCard(album, "albums")).join("")}
+    </section>
+  `;
 }

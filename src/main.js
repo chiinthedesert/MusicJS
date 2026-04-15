@@ -11,13 +11,15 @@ import { SongsView } from "./views/songs/SongsView.js";
 import { handleSongsAction } from "./views/songs/handleSongsAction.js";
 import { handleSongsHover } from "./views/songs/handleSongsHover.js";
 
+import { AlbumsView } from "./views/albums/AlbumsView.js";
+import { handleAlbumsAction } from "./views/albums/handleAlbumsAction.js";
+
 import { PlayerView } from "./views/player/PlayerView.js";
 import { handlePlayerAction } from "./views/player/handlePlayerAction.js";
 
 import { DetailedAlbumView } from "./views/detailedAlbum/DetailedAlbumView.js";
 import { DetailedArtistView } from "./views/detailedArtist/DetailedArtistView.js";
 
-import { AlbumsView } from "./views/albums/AlbumsView.js";
 import { PlaylistsView } from "./views/playlists/PlaylistsView.js";
 import { ArtistsView } from "./views/artists/ArtistsView.js";
 
@@ -48,6 +50,7 @@ app.onclick = (e) => {
   const action = el.dataset.action;
 
   handleSongsAction(action, el);
+  handleAlbumsAction(action, el);
   handlePlayerAction(action, el);
   handleHomeAction(action, el);
   handleNavBarAction(action, el);

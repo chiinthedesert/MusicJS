@@ -22,11 +22,11 @@ export function getTracks({ artist, albumId } = {}) {
   let filteredAlbums = albums;
 
   if (artist) {
-    filteredAlbums = filteredAlbums.filter((album) => album.artist === artist);
+    filteredAlbums = filteredAlbums.filter((a) => a.artist === artist);
   }
 
   if (albumId) {
-    filteredAlbums = filteredAlbums.filter((album) => album.id === albumId);
+    filteredAlbums = filteredAlbums.filter((a) => a.id === albumId);
   }
 
   return filteredAlbums.flatMap((album) =>

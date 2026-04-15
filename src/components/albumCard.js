@@ -1,14 +1,23 @@
 export function AlbumCard(album, variant = "home") {
   return `
-    <div data-action="album-click" data-album-id="${album.id}" class="album-card ${variant}">
-      <div class="album-cover">
-        <img class="responsive square round small-width small-height" style="object-fit: cover;" src="${album.cover}" alt="${album.name}" />
+    <div data-action="album-click" data-album-id="${album.id}" class="album-card ${variant}"
+    style="flex: 0 0 clamp(8rem, 35vw, 12rem); min-width: 0;">
+      <div class="album-cover square round" style="">
+        <img class="" style="" src="${album.cover}" alt="${album.name}" />
       </div>
 
       <div class="album-info">
-        <div class="album-name bold tiny-line">${album.name}</div>
-        <div class="album-artist no-line">${album.artist}</div>
+        <div class="album-name bold tiny-line"
+        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <span>${album.name}</span>
+        </div>
+
+        <div class="album-artist no-line"
+        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <span>${album.artist}</span>
+        </div>
       </div>
+
     </div>
   `;
 }
