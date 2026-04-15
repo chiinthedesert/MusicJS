@@ -14,7 +14,7 @@ export function DetailedArtistView() {
       ${BackButton()}
       ${PhotoAndName(artist)}
       ${PlayAndShuffle()}
-      ${ArtistTracks(tracks)}
+      ${ArtistSongs(tracks)}
       ${RecentAlbums(artist)}
 
     </div>
@@ -40,7 +40,6 @@ function PhotoAndName(artist) {
         <h6 class="bold">${artist.name}</h6>
       </div>
     </section>
-
   `;
 }
 
@@ -57,9 +56,9 @@ function PlayAndShuffle() {
   `;
 }
 
-function ArtistTracks(tracks) {
+function ArtistSongs(tracks) {
   return `
-    <section class="artist-tracks">
+    <section class="artist-songs">
       <div>
         <h6 class="bold">Top Songs</h6>
       </div>

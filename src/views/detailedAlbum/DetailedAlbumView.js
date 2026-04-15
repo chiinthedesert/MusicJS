@@ -2,6 +2,7 @@ import { getAlbum } from "../../utils/getAlbum.js";
 import { getTracks } from "../../utils/getTracks.js";
 import * as state from "../../state.js";
 import { TrackItem } from "../../components/trackItem.js";
+import { formatTime } from "../../utils/formatTime.js";
 
 export function DetailedAlbumView() {
   const { viewState } = state.getState();
@@ -11,42 +12,12 @@ export function DetailedAlbumView() {
   );
 
   const html = `
-    <div id="detailed-album-view">
+    <div id="detailed-album-view" class="padding">
       ${BackButton()}
-
-      <div class="album-header">
-        <img src="${album.cover}" class="album-cover"/>
-
-        <p class="album-type">Album</p>
-        <h1 class="album-title">${album.name}</h1>
-        <p class="album-artist">${album.artist} • ${album.year}</p>
-      </div>
-
-      <div class="album-controls">
-        <button class="play-btn">
-          <i class="material-icons">play_arrow</i>
-        </button>
-      </div>
-
-      <div class="song-list">
-
-        <div class="song-header">
-          <span>#</span>
-          <span>Title</span>
-          <span class="time">
-            <i class="material-icons">schedule</i>
-          </span>
-        </div>
-        ${tracks
-          .map((track, index) =>
-            TrackItem(track, {
-              variant: "album",
-              index: index + 1,
-            }),
-          )
-          .join("")}
-      </div>
-
+      ${PhotoAndInfo(album)}
+      ${AlbumArtist(album)}
+      ${PlayAndShuffle()}
+      ${AlbumTracks(tracks)}
     </div>
   `;
 
@@ -58,5 +29,58 @@ function BackButton() {
     <button data-action="player:back" class="extra circle transparent ">
       <i class="bold">arrow_back</i>
     </button>
+  `;
+}
+
+function PhotoAndInfo(album) {
+  return `
+    <section class="row vertical center-align tiny-space">
+      <img class="shape no-round"
+      style="block-size: 16rem; inline-size: 16rem; object-fit: cover;" src="${album.cover}" alt="" />
+      <div class="album-info">
+        <h6 class="bold">${album.name}</h6>
+        <div class="center-align">
+          <span>${album.year}</span> - <span>${formatTime(album.duration)}</span>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function AlbumArtist(album) {
+  return `
+    <section data-action="artist-click" data-artist="${album.artist}" class="album-artist row">
+      <img class="circle extra"
+      style="object-fit: cover;" src="${album.artistPhoto}" alt="" />
+      <div class="artist-info">
+        <h6 class="">${album.artist}</h6>
+      </div>
+    </section>
+  `;
+}
+
+function PlayAndShuffle() {
+  return `
+    <div class="play-buttons row center-align">
+      <button data-action="songs:play-all" class="shape sided-cookie6 medium active">
+        <i class="extra">play_arrow</i>
+      </button>
+      <button data-action="songs:shuffle" class="shape sided-cookie12 medium">
+        <i class="extra">shuffle</i>
+      </button>
+    </div>
+  `;
+}
+
+function AlbumTracks(tracks) {
+  return `
+    <section class="album-tracks">
+      <div>
+        <h6 class="bold">Tracks</h6>
+      </div>
+      <ul class="tracks-list no-padding">
+        ${tracks.map((track, index) => TrackItem(track, { variant: "album", index: index + 1 })).join("")}
+      </ul>
+    </section>
   `;
 }

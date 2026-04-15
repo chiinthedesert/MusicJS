@@ -6,8 +6,8 @@ import { getArtists } from "../../utils/getArtists.js";
 
 export function HomeView() {
   const html = `
-  <div class="home-view padding">
-    ${SearchBar()}
+    <div class="home-view padding">
+      ${SearchBar()}
       ${QuickActions()}
       ${RecentAlbums()}
       ${RecentArtists()}

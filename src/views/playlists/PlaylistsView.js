@@ -2,10 +2,11 @@ import { SearchBar } from "../../components/searchBar.js";
 
 export function PlaylistsView() {
   const html = `
-    <div class="playlists-view">
+    <div id="playlists-view" class="padding">
       ${SearchBar()}
+      <h2>this view haven't be implemented.</h2>
+      <h2 class="center-align">(˃̣̣̥ᯅ˂̣̣̥)</h2>
     </div>
-    <h1>code haven't implemented this view yet</h1>
   `;
 
   document.getElementById("view").innerHTML = html;
