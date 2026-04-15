@@ -6,7 +6,7 @@ export const albums = [
     year: 2015,
 
     cover: "./src/img/covers/carrie-lowell.jpg",
-    artistPhoto: "./src/img/artists/sufjan-stevens.png",
+    artistPhoto: "./src/img/artists/sufjan-stevens.jpg",
 
     tracks: [
       {
@@ -259,7 +259,7 @@ Like a shadow made of light
     artist: "ILLIT",
     year: 2024,
 
-    cover: "./src/img/covers/super-real-me.png",
+    cover: "./src/img/covers/super-real-me.jpg",
     artistPhoto: "./src/img/artists/illit.jpg",
 
     tracks: [
@@ -387,7 +387,7 @@ You got me feeling like a magnet
     artist: "The Beatles",
     year: 1965,
 
-    cover: "./src/img/covers/rubber-soul.png",
+    cover: "./src/img/covers/rubber-soul.jpg",
     artistPhoto: "./src/img/artists/the-beatles.jpg",
 
     tracks: [
