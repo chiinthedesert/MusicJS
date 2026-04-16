@@ -12,8 +12,10 @@ export function NavBar() {
       : "";
 
   const html = `
-    <nav class="navbar small-padding secondary row top-round center-align"
-      style="display: ${hidden}; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important;">
+    <nav id="navbar" class="navbar small-padding secondary row center-align"
+      style="display: ${hidden};
+      position: fixed; bottom: 0; left: 0; right: 0;
+      border-radius: 2rem 2rem 0 0 !important;">
 
       ${NavButton("home", "home", currentView)}
       ${NavButton("songs", "library_music", currentView)}
@@ -24,7 +26,7 @@ export function NavBar() {
     </nav>
   `;
 
-  document.getElementById("navbar").innerHTML = html;
+  document.getElementById("navbar-container").innerHTML = html;
 }
 
 function NavButton(view, icon, currentView) {

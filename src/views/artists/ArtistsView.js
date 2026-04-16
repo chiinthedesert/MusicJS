@@ -19,7 +19,7 @@ export function ArtistsView() {
       ${ArtistsGrid(artists)}
     </div>
   `;
-  document.getElementById("view").innerHTML = html;
+  document.getElementById("view-container").innerHTML = html;
 }
 
 function SortMenu({ by, order, isSortOpen }) {
@@ -49,10 +49,10 @@ function SortMenu({ by, order, isSortOpen }) {
 function PlayAndShuffle() {
   return `
     <div class="play-buttons row center-align">
-      <button data-action="artists:play-all" class="shape sided-cookie6 medium active">
+      <button data-action="artists:play-all" class="play-button shape sided-cookie6 medium active">
         <i class="extra">play_arrow</i>
       </button>
-      <button data-action="artists:shuffle" class="shape sided-cookie12 medium">
+      <button data-action="artists:shuffle" class="shuffle-button shape sided-cookie12 medium">
         <i class="extra">shuffle</i>
       </button>
     </div>
@@ -65,6 +65,7 @@ function ArtistsGrid(artists) {
   }
 
   return `
+    <h5 class="section-title bold top-margin">Artists</h5>
     <section 
       style="
         display: grid;

@@ -12,7 +12,7 @@ export function PlayerView() {
 
   const html = `
     <div id="player-view" class=""
-    style="display: flex; flex-direction: column; height: 100dvh;">
+    style="display: flex; flex-direction: column; height: 100dvh; max-width: 65rem; margin: 0 auto;">
 
       <div class="player-main left-padding right-padding" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
         ${BackButton()}
@@ -25,7 +25,7 @@ export function PlayerView() {
       ${Lyrics(lyrics, isLyricsOpen)}
     </div>
   `;
-  document.getElementById("view").innerHTML = html;
+  document.getElementById("view-container").innerHTML = html;
 }
 
 function BackButton() {
@@ -124,18 +124,20 @@ function OtherButtons() {
 
 function Lyrics(lyrics, isLyricsOpen) {
   return `
-
-    <div id="lyrics-bar" class="secondary small-padding top-round center-align" 
-      style="margin-top: auto; border-bottom-left-radius:0 !important; border-bottom-right-radius:0 !important;"
+    <div id="lyrics-bar" class="lyrics-bar secondary small-padding top-round center-align" 
+      style="margin-top: auto; 
+      border-bottom-left-radius:0 !important;
+      border-bottom-right-radius:0 !important;"
     >
       ${
         isLyricsOpen
           ? `
-          <div class="secondary padding" style="
+          <div class="lyrics-space secondary padding" style="
             white-space: pre-line;
             position: fixed;
-            left: 0;
             bottom: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             height: 55dvh;
             padding-bottom: 2rem !important;
@@ -146,7 +148,7 @@ function Lyrics(lyrics, isLyricsOpen) {
           `
           : ""
       }
-      <button class="" data-action="player:lyrics-toggle">
+      <button class="lyrics-button" data-action="player:lyrics-toggle">
         <span style="font-size: 1.25rem; font-weight: bold;">
           ${isLyricsOpen ? "close lyrics" : "show lyrics"} /ᐠ > ˕ <マ
         </span>

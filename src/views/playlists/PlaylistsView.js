@@ -19,7 +19,8 @@ export function PlaylistsView() {
       ${PlaylistsGrid(playlists)}
     </div>
   `;
-  document.getElementById("view").innerHTML = html;
+
+  document.getElementById("view-container").innerHTML = html;
 }
 
 function SortMenu({ by, order, isSortOpen }) {
@@ -82,6 +83,7 @@ function PlaylistsGrid(playlists) {
   }
 
   return `
+    <h5 class="section-title bold top-margin">Playlists</h5>
     <section
       style="
         display: grid;

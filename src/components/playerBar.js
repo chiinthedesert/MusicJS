@@ -6,15 +6,23 @@ export function PlayerBar() {
   const song = getCurrentSong();
 
   const hidden = currentView === "player" ? "none" : "";
+  const withoutNavBar =
+    currentView === "player" ||
+    currentView === "detailedArtist" ||
+    currentView === "detailedAlbum" ||
+    currentView === "detailedPlaylist"
+      ? "0.25rem"
+      : "3.75rem";
 
   const title = song?.title || "No song";
   const artist = song?.artist || "";
   const cover = song?.cover || "src/img/no-song.jpg";
 
   const html = `
-    <div class="primary-container row center-align round no-space left-margin right-margin"
-      style="display: ${hidden};"
+    <div id="player-bar" class="player-bar primary-container row center-align round no-space"
       data-action="player:open"
+      style="display: ${hidden};
+      position: fixed; bottom: ${withoutNavBar}; left: 1rem; right: 1rem;"
     >
 
       <div class="small-margin shape sided-cookie12 ${isPlaying ? "rotate" : ""}">
@@ -48,5 +56,5 @@ export function PlayerBar() {
     </div>
   `;
 
-  document.getElementById("player-bar").innerHTML = html;
+  document.getElementById("player-bar-container").innerHTML = html;
 }

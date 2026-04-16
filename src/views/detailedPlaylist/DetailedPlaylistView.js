@@ -26,7 +26,7 @@ export function DetailedPlaylistView() {
     </div>
   `;
 
-  document.getElementById("view").innerHTML = html;
+  document.getElementById("view-container").innerHTML = html;
 }
 
 function BackButton() {
@@ -72,9 +72,7 @@ function PlaylistTracks(tracks) {
         <h6 class="bold">Tracks</h6>
       </div>
       <ul class="tracks-list no-padding">
-        ${tracks
-          .map((track, index) => TrackItem(track, { variant: "album", index: index + 1 }))
-          .join("")}
+        ${tracks.map((track) => TrackItem(track)).join("")}
       </ul>
     </section>
   `;

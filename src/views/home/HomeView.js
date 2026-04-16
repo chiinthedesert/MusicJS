@@ -6,14 +6,14 @@ import { getArtists } from "../../utils/getArtists.js";
 
 export function HomeView() {
   const html = `
-    <div class="home-view padding">
+    <div id="home-view" class="home-view padding">
       ${SearchBar()}
       ${QuickActions()}
       ${RecentAlbums()}
       ${RecentArtists()}
     </div>
   `;
-  document.getElementById("view").innerHTML = html;
+  document.getElementById("view-container").innerHTML = html;
 }
 
 function QuickActions() {
@@ -53,9 +53,7 @@ function RecentAlbums() {
     <section class="section">
       <div class="section-header row">
         <h6 class="bold max">Recently played albums</h6>
-        <button class="transparent">
-          <i class="bold">arrow_forward</i>
-        </button>
+        <i class="bold">arrow_forward</i>
       </div>
 
       <div class="horizontal-list row scroll" style="scrollbar-width: none;">
@@ -75,9 +73,7 @@ function RecentArtists() {
     <section class="section">
       <div class="section-header row">
         <h6 class="bold max">Recent artists</h6>
-        <button class="transparent">
-          <i class="bold ">arrow_forward</i>
-        </button>
+        <i class="bold ">arrow_forward</i>
       </div>
 
       <div class="horizontal-list row scroll" style="scrollbar-width: none;">

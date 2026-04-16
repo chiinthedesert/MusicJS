@@ -41,6 +41,7 @@ export function handlePlayerAction(action, el) {
 
     case "player:lyrics-toggle": {
       const { isLyricsOpen } = state.getState();
+
       state.setState({ isLyricsOpen: !isLyricsOpen });
       break;
     }

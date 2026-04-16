@@ -21,7 +21,7 @@ export function DetailedAlbumView() {
     </div>
   `;
 
-  document.getElementById("view").innerHTML = html;
+  document.getElementById("view-container").innerHTML = html;
 }
 
 function BackButton() {
@@ -49,11 +49,13 @@ function PhotoAndInfo(album) {
 
 function AlbumArtist(album) {
   return `
-    <section data-action="artist-click" data-artist="${album.artist}" class="album-artist row">
-      <img class="circle extra"
-      style="object-fit: cover;" src="${album.artistPhoto}" alt="" />
-      <div class="artist-info">
-        <h6 class="">${album.artist}</h6>
+    <section class="album-artist">
+      <div data-action="artist-click" data-artist="${album.artist}" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+        <img class="circle extra"
+        style="object-fit: cover;" src="${album.artistPhoto}" alt="" />
+        <div class="artist-info">
+          <h6 class="">${album.artist}</h6>
+        </div>
       </div>
     </section>
   `;
@@ -62,10 +64,10 @@ function AlbumArtist(album) {
 function PlayAndShuffle() {
   return `
     <div class="play-buttons row center-align">
-      <button data-action="songs:play-all" class="shape sided-cookie6 medium active">
+      <button data-action="songs:play-all" class="play-button shape sided-cookie6 medium active">
         <i class="extra">play_arrow</i>
       </button>
-      <button data-action="songs:shuffle" class="shape sided-cookie12 medium">
+      <button data-action="songs:shuffle" class="shuffle-button shape sided-cookie12 medium">
         <i class="extra">shuffle</i>
       </button>
     </div>

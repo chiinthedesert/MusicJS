@@ -1,7 +1,7 @@
 # Thiết kế web app nghe nhạc ngoại tuyến theo Material Design
 
 ## Những việc cần làm
-- [ ] thiết kế giao diện cho desktop
+- [x] chỉnh giao diện cho phù hợp với màn hình desktop
 - [ ] logic queue đơn giản
 - [ ] viết README đầy đủ, giải thích code album view, artist view và detailed album view để làm mẫu
 - [ ] animation khi chuyển đổi giữa các view, hover
@@ -11,7 +11,8 @@
   - [x] logic click để vào các view khác
 - [ ] player view
   - [x] giao diện
-  - [ ] logic click các buttons
+  - [ ] logic click để play/pause, next/previous song
+  - [x] lyrics
 - [x] songs view
   - [x] giao diện
   - [x] logic click để vào detail song view
@@ -28,9 +29,9 @@
 - [x] detail album view
   - [x] giao diện
   - [x] cần style tốt hơn
+- [x] playlists view
 - [ ] search view
 - [ ] settings view
-- [ ] playlists view
 
 ## Cách web được thiết kế
 - Sử dụng [BeerCSS](https://beercss.com/) để thiết kế giao diện theo Material Design
