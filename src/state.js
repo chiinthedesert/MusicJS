@@ -22,6 +22,10 @@ const state = {
       by: "name",
       order: "asc",
     },
+    playlists: {
+      by: "name",
+      order: "asc",
+    },
   },
   isSortOpen: false,
 };

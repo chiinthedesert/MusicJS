@@ -6,7 +6,8 @@ export function NavBar() {
   const hidden =
     currentView === "player" ||
     currentView === "detailedArtist" ||
-    currentView === "detailedAlbum"
+    currentView === "detailedAlbum" ||
+    currentView === "detailedPlaylist"
       ? "none"
       : "";
 

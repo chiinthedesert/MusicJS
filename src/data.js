@@ -997,3 +997,62 @@ Slow down
     ],
   },
 ];
+
+export const playlists = [
+  {
+    id: "late-night-drive",
+    name: "Late Night Drive",
+    curator: "You",
+    tracks: 24,
+    cover: "./src/img/covers/ok-computer.png",
+  },
+  {
+    id: "soft-morning",
+    name: "Soft Morning",
+    curator: "You",
+    tracks: 18,
+    cover: "./src/img/covers/carrie-lowell.jpg",
+  },
+  {
+    id: "jpop-kicks",
+    name: "J-Pop Kicks",
+    curator: "You",
+    tracks: 21,
+    cover: "./src/img/covers/your-name.jpg",
+  },
+  {
+    id: "kpop-spark",
+    name: "K-Pop Spark",
+    curator: "You",
+    tracks: 20,
+    cover: "./src/img/covers/super-real-me.jpg",
+  },
+  {
+    id: "study-focus",
+    name: "Study Focus",
+    curator: "You",
+    tracks: 30,
+    cover: "./src/img/covers/rubber-soul.jpg",
+  },
+  {
+    id: "acoustic-sunday",
+    name: "Acoustic Sunday",
+    curator: "You",
+    tracks: 16,
+    cover: "./src/img/covers/carrie-lowell.jpg",
+  },
+  {
+    id: "classic-vibes",
+    name: "Classic Vibes",
+    curator: "You",
+    tracks: 19,
+    cover: "./src/img/covers/pet-sounds.jpg",
+  },
+  {
+    id: "rainy-day-loop",
+    name: "Rainy Day Loop",
+    curator: "You",
+    tracks: 14,
+    cover: "./src/img/covers/not-cute-anymore.png",
+  },
+];

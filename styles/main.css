@@ -44,6 +44,9 @@ p {
 #view:has(#detailed-artist-view) {
   padding-bottom: calc(5rem + env(safe-area-inset-bottom));
 }
+#view:has(#detailed-playlist-view) {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+}
 
 #bottom-bars {
   position: fixed;

@@ -22,8 +22,10 @@ import { handlePlayerAction } from "./views/player/handlePlayerAction.js";
 
 import { DetailedAlbumView } from "./views/detailedAlbum/DetailedAlbumView.js";
 import { DetailedArtistView } from "./views/detailedArtist/DetailedArtistView.js";
+import { DetailedPlaylistView } from "./views/detailedPlaylist/DetailedPlaylistView.js";
 
 import { PlaylistsView } from "./views/playlists/PlaylistsView.js";
+import { handlePlaylistsAction } from "./views/playlists/handlePlaylistsAction.js";
 
 const app = document.getElementById("app");
 const views = {
@@ -35,6 +37,7 @@ const views = {
   player: PlayerView,
   detailedAlbum: DetailedAlbumView,
   detailedArtist: DetailedArtistView,
+  detailedPlaylist: DetailedPlaylistView,
 };
 
 export function renderView() {
@@ -54,6 +57,7 @@ app.onclick = (e) => {
   handleSongsAction(action, el);
   handleAlbumsAction(action, el);
   handleArtistsAction(action, el);
+  handlePlaylistsAction(action, el);
   handlePlayerAction(action, el);
   handleHomeAction(action, el);
   handleNavBarAction(action, el);
