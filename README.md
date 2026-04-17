@@ -139,7 +139,7 @@ Hầu hết phần styling và layout đều được làm trên chính js, beer
 
 18 directories, 63 files
 ```
-## cách chạy web
+## Cách chạy web
 1. Clone repository này về máy tính của bạn
 2. Mở file index.html bằng trình duyệt web (như Chrome, Firefox, v.v.)
 3. Bạn sẽ thấy giao diện của web, có thể click vào các phần khác nhau để xem các view khác nhau, ví dụ như Home, Songs, Albums, Artists, Playlists, v.v.
