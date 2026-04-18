@@ -94,10 +94,10 @@ function PlaylistsGrid(playlists) {
 
   return `
     <h5 class="section-title bold top-margin">Playlists</h5>
-    <section
+    <section class="grid playlists-grid"
       style="
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(clamp(8rem, 25vw, 12rem), 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
       "
     >

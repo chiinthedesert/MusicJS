@@ -86,10 +86,10 @@ function ArtistsGrid(artists) {
 
   return `
     <h5 class="section-title bold top-margin">Artists</h5>
-    <section 
+    <section class="grid artists-grid"
       style="
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(clamp(8rem, 25vw, 12rem), 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
       "
     >

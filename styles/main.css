@@ -32,6 +32,7 @@ p {
 #app {
 }
 
+/* làm navbar và player bar không che nội dung */
 #view-container {
   width: 100%;
   max-width: 100rem;
@@ -69,5 +70,32 @@ p {
   .shuffle-button {
     block-size: 6rem !important;
     inline-size: 6rem !important;
+  }
+}
+
+/* grid responsive layout cho grid section trong albums view, artist view, playlist view... */
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+@media (min-width: 1500px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr) !important;
   }
 }
