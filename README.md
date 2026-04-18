@@ -69,31 +69,6 @@ Hầu hết phần styling và layout đều được làm trên chính js, beer
 │   │   └── trackItem.js
 │   ├── data.js
 │   ├── img
-│   │   ├── artists
-│   │   │   ├── illit.jpg
-│   │   │   ├── radiohead.jpg
-│   │   │   ├── radwimps.jpg
-│   │   │   ├── sufjan-stevens.jpg
-│   │   │   ├── the-beach-boys.webp
-│   │   │   └── the-beatles.jpg
-│   │   ├── covers
-│   │   │   ├── acoustic-sunday.jpg
-│   │   │   ├── carrie-lowell.jpg
-│   │   │   ├── ill-like-you.jpg
-│   │   │   ├── jpop-kicks.jpg
-│   │   │   ├── kpop-spark.png
-│   │   │   ├── not-cute-anymore.png
-│   │   │   ├── ok-computer.png
-│   │   │   ├── pet-sounds.jpg
-│   │   │   ├── rainy-day-loop.jpg
-│   │   │   ├── rubber-soul.jpg
-│   │   │   ├── soft-morning.webp
-│   │   │   ├── study-focus.png
-│   │   │   ├── super-real-me.jpg
-│   │   │   └── your-name.jpg
-│   │   ├── no-playlist.jpg
-│   │   ├── no-playlist.png
-│   │   └── no-song.jpg
 │   ├── main.js
 │   ├── state.js
 │   ├── utils
@@ -122,7 +97,6 @@ Hầu hết phần styling và layout đều được làm trên chính js, beer
 │       ├── detailedPlaylist
 │       │   └── DetailedPlaylistView.js
 │       ├── home
-│       │   ├── handleHomeAction.js
 │       │   └── HomeView.js
 │       ├── player
 │       │   ├── handlePlayerAction.js
@@ -132,12 +106,11 @@ Hầu hết phần styling và layout đều được làm trên chính js, beer
 │       │   └── PlaylistsView.js
 │       └── songs
 │           ├── handleSongsAction.js
-│           ├── handleSongsHover.js
 │           └── SongsView.js
 └── styles
     └── main.css
 
-18 directories, 63 files
+18 directories, 61 files
 ```
 ## Cách chạy web
 1. Clone repository này về máy tính của bạn
